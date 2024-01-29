@@ -1,0 +1,8 @@
+{
+  "label": "Manual de Instalacion",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Aqui los distintos procesos de instalacion dependiendo la distribucion de linux."
+  }
+}
