@@ -21,7 +21,19 @@ En caso de contar con servicios instalados en su instancia como MySQL, Apache o 
 ### Pasos
 
 1. Acceder a su instancia vía SSH.
-2. Loguearse como super usuario: `sudo su`
-3. Clonar el snippet de GitLab que contiene el script: `git clone https://gitlab.com/snippets/2079063.git script`
-4. Ingresar a la carpeta clonada: `cd script`
-5. Dar permisos de ejecución al script: `chmod +x install.sh`
+2. Loguearse como super usuario:
+```bash
+sudo su
+```
+3. Clonar el snippet de GitLab que contiene el script:
+```bash
+git clone https://gitlab.com/snippets/2079063.git script
+```
+4. Ingresar a la carpeta clonada:
+```bash
+cd script
+```
+5. Dar permisos de ejecución al script:
+```bash
+chmod +x install.sh
+```

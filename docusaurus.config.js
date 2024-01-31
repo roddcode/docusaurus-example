@@ -23,7 +23,7 @@ const config = {
   deploymentBranch: 'gh-pages',
   trailingSlash: false,
   organizationName: 'roddcode',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
@@ -63,16 +63,13 @@ const config = {
         title: '',
         logo: {
           alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          src: 'https://buho.la/templates/inexus/inexus/assets/img/logos/logo-blue.svg',
         },
         items: [
           
         ],
       },
-      footer: {
-        style: 'dark',
-        
-      },
+      
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,

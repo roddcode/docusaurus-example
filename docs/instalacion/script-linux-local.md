@@ -16,92 +16,157 @@ Ubuntu no cuenta con la versión 7.2 de php de manera nativa por lo que se debe 
 
 Para poder ejecutar los siguientes comandos debe acceder a la terminal como usuario root.
 
-- ```apt-get update```
+```bash
+apt-get update
+```
 
 Para poder agregar un PPA, ejecute los siguientes:
-- ```apt-get install software-properties-common```
-- ```apt-get install python-software-properties```
+```bash
+apt-get install software-properties-common
+```
+```bash
+apt-get install python-software-properties
+```
 
 Para agregar el PPA, en algunos casos solicitará confirmar con enter:
-- ```add-apt-repository ppa:ondrej/php```
-- ```apt-get update```
+```bash
+add-apt-repository ppa:ondrej/php
+```
+```bash
+apt-get update
+```
 
 Procedemos a Instalar PHP, aunque se instalar algunas librerías junto con PHP, se agregan para asegurar la instalación:
-- ```apt-get install php7.2 php7.2-mbstring php7.2-soap php7.2-zip php7.2-mysql php7.2-curl php7.2-gd php7.2-xml php7.2-mcrypt```
+```bash
+apt-get install php7.2 php7.2-mbstring php7.2-soap php7.2-zip php7.2-mysql php7.2-curl php7.2-gd php7.2-xml php7.2-mcrypt
+```
 
 Instalamos Mysql, phpmyadmin opcional:
-- ```apt-get install mysql-server-5.7 mysql-client-5.7 phpmyadmin```
+```bash
+apt-get install mysql-server-5.7 mysql-client-5.7 phpmyadmin
+```
 
 Se le solicitará contraseña dos veces, con su confirmación, tanto para mysql como para phpmyadmin.
 
 Instalamos Curl y Git:
-- ```apt-get install git```
-- ```apt-get install curl```
+```bash
+apt-get install git
+```
+```bash
+apt-get install curl
+```
 
 Luego se procede a instalar Composer:
-- ```apt-get install composer```
+```bash
+apt-get install composer
+```
 
 Dar permisos de lectura y escritura a la carpeta composer:
-- ```chmod -R 777 ~/.composer```
+```bash
+chmod -R 777 ~/.composer
+```
 
 Instalar librerías cpriego de Valet:
-- ```composer global require cpriego/valet-linux```
+```bash
+composer global require cpriego/valet-linux
+```
 
 Ir a carpeta home /.profile y añadir la siguiente línea al final del documento y guardar:
-- ```nano ~/.profile```
-- ```PATH= "HOME/.composer/vendor/bin:$PATH"```
+```bash
+nano ~/.profile
+```
+```bash
+PATH= "HOME/.composer/vendor/bin:$PATH"
+```
 
-Luego ejecutar en terminal: ```source ~/.profile```
+Luego ejecutar en terminal: 
+```bash
+source ~/.profile
+```
 
 Instalar las siguientes librerías:
-- ```apt install network-maneger libnss3-tools jq xsel```
+```bash
+apt install network-maneger libnss3-tools jq xsel
+```
 
 Ya en este punto el sistema se encuentra listo para instalar Valet, pero antes debe asegurarse de tener libre el puerto :80. Si tienes instalado apache en tu sistema debes detenerlo para liberar el puerto.
 
 Detener servicios de apache2 si lo tienes instalado:
-- ```services apache2 stop```
+```bash
+services apache2 stop
+```
 
 Valet trabaja con el servidor de nginx por lo cual debe instalarse previamente antes de instalar Valet:
-- ```apt install nginx```
+```bash
+apt install nginx
+```
 
 Verificar que el servidor de nginx se está ejecutando correctamente:
-- ```systemctl status nginx```
+```bash
+systemctl status nginx
+```
 
 Si todo está ok instalar valet:
-- ```valet install```
+```bash
+valet install
+```
 
 Con valet podemos tener nuestro código en cualquier parte del sistema en este caso usaremos la carpeta home para instalarlo.
-- ```mkdir ~/code```
-- ```cd code```
-- ```valet park```
+```bash
+mkdir ~/code
+```
+```bash
+cd code
+```
+```
+bashvalet park
+```
 
 Ya en este punto tenemos todo listo para clonar el repositorio y ejecutarlo. Una vez ubicado en /code con la herramienta git, si ya se le ha compartido acceso a repositorio ejecute lo siguiente:
 
-```git clone https://gitlab.com/b.mendoza/facturadorpro3.git```
+```bash
+git clone https://gitlab.com/b.mendoza/facturadorpro3.git
+```
 
 Esto creará una carpeta llamada facturadorpro3, luego de la descarga puede entrar en la carpeta con `cd facturadorpro3`, dentro de ella puede ejecutar lo siguiente para configurar el archivo .env:
-- ```cp .env.example .env```
+```bash
+cp .env.example .env
+```
 
 Donde APP_URL_BASE corresponde a su dominio, DB_DATABASE será el nombre que le de a la base de datos principal, DB_USERNAME y DB_PASSWORD equivalen al usuario creado anteriormente en la instalación de mysql.
 
 Seguidamente:
-- ```php artisan key:generate```
-- ```composer dump-autoload```
+```bash
+php artisan key:generate
+```
+```bash
+composer dump-autoload
+```
 
 Luego deberá registrar la base de datos mediante phpmyadmin, accediendo a la ruta sudominio.com/phpmyadmin con el usuario root y contraseña agregada en la instalación.
 
 Si todo marcha bien es hora de agregar los paquetes faltantes en el proyecto y ejecutar las migraciones.
-- ```composer install```
-- ```php artisan migrate --seed```
+```bash
+composer install
+```
+```bash
+php artisan migrate --seed
+```
 
 Puede verificar actualizando phpmyadmin, en la lista de la izquierda se mostrará la base de datos creada y la derecha las tablas generadas.
 
 Con estos pasos podrá observar el aplicativo en su dominio, en algunos casos si tiene problemas para observar el aplicativo puede deberse a los permisos en las carpetas del proyecto, principalmente storage y cache requieren el siguiente comando:
-- ```chmod -R 755 storage```
-- ```chmod -R 755 bootstrap/cache```
+```bash
+chmod -R 755 storage
+```
+```bash
+chmod -R 755 bootstrap/cache
+```
 
 También es necesario ejecutar el siguiente comando para establecer la ruta de los archivos cargados de la empresa:
-- ```php artisan storage:link```
+```bash
+bashphp artisan storage:link
+```
 
 Si todo se realizó correctamente, ya tendrá las tablas del usuario principal creadas, y podrá acceder mediante la web, al proyecto.
 

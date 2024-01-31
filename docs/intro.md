@@ -1,12 +1,14 @@
 ---
 sidebar_position: 1
+slug: /
+title: Cómo empezar
 ---
 
 # Cómo empezar
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Bienvenido a la guia de instalacion para trabajar en Buho. **Hecho con finalidades de practicar**.
 
-## Getting Started
+## Esto es un ejemplo practico de como usar docusaurus para documentar
 
 Get started by **creating a new site**.
 
